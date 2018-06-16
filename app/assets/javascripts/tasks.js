@@ -16,6 +16,7 @@ $(function() {
         ulTodos.html(currentHTML);
 
         $('.toggle').change(toggleTask);
+        $('.new-todo').val('');
       });
     });
 
@@ -50,5 +51,7 @@ $(function() {
       ulTodos.html(htmlString);
 
       $('.toggle').change(toggleTask);
+
+
     });
   });
