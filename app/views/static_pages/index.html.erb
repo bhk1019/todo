@@ -20,7 +20,20 @@
     $('#new-form').submit(function (event) {
       event.preventDefault();
       var textbox = $('.new-todo');
-      console.log("Task: ", textbox.val());
+      var payload = {
+        task: {
+          title: textbox.val()
+        }
+      };
+      $.post("/tasks/", payload).success( function (data) {
+        console.log(data);
+        var ulTodos = $('.todo-list');
+        var currentHTML = ulTodos.html();
+        currentHTML += taskHTML(data);
+        ulTodos.html(currentHTML);
+
+        $('.toggle').change(toggleTask);
+      });
     });
 
     function taskHTML(task) {
